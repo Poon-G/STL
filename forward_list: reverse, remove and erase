@@ -1,0 +1,31 @@
+
+#include <iostream>
+#include <forward_list>
+
+int main()
+{
+    std::forward_list<int>root{1,2,3,4,5,6};
+    std::forward_list<int>reverse;
+    
+    root.reverse();
+    for(auto x:root)
+    std::cout<<x<<" ";
+    
+    //diff between remove and erase:
+    std::forward_list<int>list1{1,2,3,4,2,3,1,4,6,4,7,4};
+    list1.remove(4);        //remove all occurences of 4
+    for(auto x:list1)
+    std::cout<<x<<" ";
+    std::cout<<"\n";
+    
+    std::forward_list<int>list2{1,2,3,4,2,3,1,4,6,4,7,4};
+    std::forward_list<int>::iterator it1;
+    it1=list2.begin();
+    std::advance(it1,2);
+    list2.erase_after(it1); //remove an index after 3rd from begin
+    
+    for(auto x:list2)
+    std::cout<<x<<" ";
+    std::cout<<"\n";
+    return 0;
+}
